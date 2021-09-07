@@ -1,0 +1,1 @@
+exports.view = (filename) => __dirname + '/src/view/' + filename + '.html';

@@ -1,0 +1,14 @@
+version: "3"
+services:
+  socket:
+    container_name: socket.io-demo
+    build: 
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "8187:3000"
+    volumes:
+      - "/app/node_modules"
+      - "./:/app"
+    
+    

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cliente Maxirest socket</title>
+</head>
+
+<body>
+
+    <h1>Conectar</h1>
+
+    <button id="conectar">Conectar</button>
+
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script>
+
+        var socket = io('http://127.0.0.1:8185');
+
+        document.getElementById('conectar').addEventListener('click', () => {
+            msj = {
+                "JWTToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzZXNzaW9uVG9rZW4iOiI5NWI1NTMyMjFiMjkzZDEyZTUwNDZmYTUwNzIwNjBjYzQxNmI1MDhiIiwiY29kY2xpIjoxNDQwMCwiY29kX3BhcnRuZXIiOjQ1Niwic29sdWNpb25lcyI6eyI5OSI6dHJ1ZSwiMjEiOnRydWV9fQ.4DIkFFLVnh24TXp5ZVfokIWR0KnjD9s67YUA1nMhpX4",
+                "DeviceID": "nacho"
+            }
+            socket.emit('login', msj);
+            console.log("oks")
+        })
+
+
+
+        socket.on('msg', (msj) => {
+            console.log(msj)
+        })
+
+
+        socket.on('event', (msj) => {
+            console.log(msj)
+        })
+
+        socket.on('connected_cli', (msj) => {
+            console.log(msj)
+        })
+
+        socket.on('connect', () => {
+            console.log("connection")
+        })
+
+
+        socket.on('disconnect', () => {
+            console.log("DESCONECTADO")
+        })
+
+    </script>
+</body>
+
+</html>
